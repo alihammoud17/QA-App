@@ -1,12 +1,20 @@
 
-
+import { Jumbotron } from 'reactstrap';
 import React from 'react'
 
-const HeaderComponent = ({title}) => {
+const HeaderComponent = ({title, description}) => {
     return (
-    <div className='header'>
-      <h1>{title}</h1>
-    </div>
+        <Jumbotron>
+            <div className="container">
+                <div className="row row-header">
+                    <div className="col-12 col-sm-6">
+                        <h1>{title}</h1>
+                        <p>{description}</p>
+                    </div>
+                </div>
+            </div>
+        </Jumbotron>
+
     )
 }
 

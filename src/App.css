@@ -1,22 +1,12 @@
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.row-header{
+  margin:0px auto;
+  padding:0px auto;
 }
 
-.container {
-  max-width: 500px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.form-control {
-  margin: 20px 0;
-  width: max-content;
+.jumbotron {
+  padding:30px 30px 30px 30px;
+  margin-bottom:30px auto;
+  background: #3f51b5 ;
+  color:floralwhite;
 }

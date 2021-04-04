@@ -5,10 +5,10 @@ import QuestionsComponent from './components/QuestionsComponent';
 
 const App = () => {
   return (
-    <div class='container'>
-      <HeaderComponent title={'Q&A'}/>
+    <>
+      <HeaderComponent title={'Q&A'} description={'Once you start asking questions, innocence is gone'}/>
       <QuestionsComponent />
-    </div>
+    </>
     
   );
 }
