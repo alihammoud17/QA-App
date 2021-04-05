@@ -1,4 +1,4 @@
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
 import  Button  from '@material-ui/core/Button'
 import React from 'react';
@@ -7,6 +7,7 @@ import PostQuestions from './PostQuestions';
 import { useState, useEffect } from 'react';
 import { QUESTIONS } from '../shared/questions';
 import  Pagination from './Pagination';
+import AskQsComponent from './AskQsComponent'
 
 const QuestionsComponent = () => {
 
@@ -14,6 +15,7 @@ const QuestionsComponent = () => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [questionsPerPage] = useState(5);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -22,6 +24,16 @@ const QuestionsComponent = () => {
         setTimeout(() => {
              setLoading(false);},3000);
     }, [])
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
+
+    const handleQuestions = values => {
+        toggleModal();
+        console.log("Current State: " + JSON.stringify(values));
+        alert("Current State: " + JSON.stringify(values));
+    }
 
     const indexOfLastQuestion = currentPage * questionsPerPage;
     const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
@@ -33,10 +45,17 @@ const QuestionsComponent = () => {
         <React.Fragment>
             <Row className="form-group">
                 <Col>
-                    <Button fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
+                    <Button onClick={toggleModal} fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
                 </Col>
             </Row>
-            
+            <Modal isOpen={isModalOpen} toggle={toggleModal}>
+                <ModalHeader toggle={toggleModal}>
+                    Ask a Question
+                </ModalHeader>
+                <ModalBody>
+                    <AskQsComponent />
+                </ModalBody>
+            </Modal>
             <LocalForm>
                 <h3>Questions</h3>
                 <Row className="form-group">
