@@ -6,7 +6,7 @@ import { Row } from 'reactstrap';
 
 const RenderQuestion = ({question}) => {
     return (
-        <Card>
+        <Card variant="outlined">
         <CardActionArea>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
