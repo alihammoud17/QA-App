@@ -3,44 +3,31 @@ import { Control, LocalForm } from 'react-redux-form';
 import  Button  from '@material-ui/core/Button'
 import React from 'react';
 import { Add, Search } from '@material-ui/icons';
-import { Card, CardContent, CardActionArea } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import PostQuestions from './PostQuestions';
+import { useState, useEffect } from 'react';
+import { QUESTIONS } from '../shared/questions';
+import  Pagination from './Pagination';
 
-const RenderQuestion = ({question}) => {
-    return (
-        <Card>
-        <CardActionArea>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {question.question}
-                    </Typography>
-                    <Typography variant="body1" color="textPrimary">
-                        {question.category}
-                    </Typography>
-                    <Typography variant="body2" color="text-secondary">
-                       asked by {question.author}, on {new Intl.DateTimeFormat('en-US',{
-                        year: 'numeric',
-                        month: 'long',
-                        day: '2-digit'
-                    }).format(new Date(question.date))}
-                    </Typography>
-                </CardContent>
-        </CardActionArea>
-    </Card>
-    );
-    
-}
+const QuestionsComponent = () => {
 
+    const [questions, setQuestions] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [questionsPerPage] = useState(5);
 
-const QuestionsComponent = ({questions}) => {
+    useEffect(() => {
+        setLoading(true);
+        setQuestions(QUESTIONS)
+        console.log(questions.length)
+        setTimeout(() => {
+             setLoading(false);},3000);
+    }, [])
 
-    const qst = questions.map((question) => {
-        return (
-            <div id="qt" key={question.id} className="col-12">
-                <RenderQuestion question={question} />
-            </div>
-        );
-    });
+    const indexOfLastQuestion = currentPage * questionsPerPage;
+    const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+    const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <React.Fragment>
@@ -72,10 +59,12 @@ const QuestionsComponent = ({questions}) => {
                     </Col>
                 </Row>
                 <h4>Most frequent</h4>
-                <Row className="form-group">
-                    {qst}
-                </Row>
+                <PostQuestions questions={currentQuestions} loading={loading} />
             </LocalForm>
+            
+            <Pagination questionsPerPage={questionsPerPage} totalQuestions={questions.length} paginate={paginate}/>
+            
+            
         </React.Fragment>
     )
 }

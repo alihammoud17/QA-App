@@ -3,14 +3,14 @@ export const QUESTIONS = [
         id: 0,
         author: 'Lionel Messi',
         category: 'Sports',
-        question: 'When did Argentina won the World Cup?',
+        question: 'When did Argentina win the World Cup?',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
         id: 1,
         author: 'Chef Ramsey',
         category: 'Nutrition',
-        question: 'How many calories does contain a hamburger?',
+        question: 'How many calories does a hamburger contain?',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
@@ -34,4 +34,26 @@ export const QUESTIONS = [
         question: 'How many times Beirut was destroyed and rebuilt?',
         date: "2014-09-05T17:57:28.556094Z"
     },
+    {
+        id: 5,
+        author: 'Georges Washington',
+        category: 'History',
+        question: 'Who is the first president of the US?',
+        date: "2014-09-05T17:57:28.556094Z"
+    },
+    {
+        id: 6,
+        author: 'Rafael Nadal',
+        category: 'Sports',
+        question: 'Can someone name the goats of tennis?',
+        date: "2014-09-05T17:57:28.556094Z"
+    },
+    {
+        id: 7,
+        author: 'Bill Gates',
+        category: 'Tech',
+        question: 'What are the main components of a computer?',
+        date: "2014-09-05T17:57:28.556094Z"
+    },
+    
 ]
