@@ -1,5 +1,3 @@
-import { List, ListItem } from "@material-ui/core";
-import { Nav, PaginationItem } from "reactstrap";
 
 
 const Pagination = ({ questionsPerPage, totalQuestions, paginate }) => {
