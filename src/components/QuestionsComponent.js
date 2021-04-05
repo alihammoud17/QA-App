@@ -6,7 +6,7 @@ import { Add, Search } from '@material-ui/icons';
 import PostQuestions from './PostQuestions';
 import { useState, useEffect } from 'react';
 import { QUESTIONS } from '../shared/questions';
-import  Pagination from './Pagination';
+import Pagination from './Pagination';
 import AskQsComponent from './AskQsComponent'
 
 const QuestionsComponent = () => {
@@ -27,12 +27,6 @@ const QuestionsComponent = () => {
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
-    }
-
-    const handleQuestions = values => {
-        toggleModal();
-        console.log("Current State: " + JSON.stringify(values));
-        alert("Current State: " + JSON.stringify(values));
     }
 
     const indexOfLastQuestion = currentPage * questionsPerPage;
