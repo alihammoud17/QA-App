@@ -38,28 +38,28 @@ export const ANSWERS = [
         id: 5,
         qId: 2,
         author: 'Ali Hammoud',
-        answer: 'It depends on its constituants, but in average its around 250 kcal.',
+        answer: 'Depends on the CPU clock speed, which is in hertz. If one cpu\'s clockspeed is 1.8Ghz, and one instruction is 1 cycle, so it can do 1,800,000,000 instructions',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
         id: 6,
         qId: 2,
         author: 'Ali Hammoud',
-        answer: 'It depends on its constituants, but in average its around 250 kcal.',
+        answer: '',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
         id: 7,
         qId: 2,
         author: 'Ali Hammoud',
-        answer: 'It depends on its constituants, but in average its around 250 kcal.',
+        answer: '',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
         id: 8,
         qId: 2,
         author: 'Ali Hammoud',
-        answer: 'It depends on its constituants, but in average its around 250 kcal.',
+        answer: '',
         date: "2014-09-05T17:57:28.556094Z"
     },
     {
