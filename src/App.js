@@ -1,16 +1,21 @@
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
+import { configureStore } from './redux/configureStore';
 import './App.css';
-import  HeaderComponent  from './components/HeaderComponent';
-import QuestionsComponent from './components/QuestionsComponent';
+import { BrowserRouter } from 'react-router-dom'
+import MainComponent from './components/MainComponent';
 
-const App = () => {
+const store = configureStore();
+
+function App() {
 
   return (
-    <div className="container">
-      <HeaderComponent title={'Q&A'} description={'Once you start asking questions, innocence is gone'}/>
-      <QuestionsComponent />
-    </div>
-    
+    <Provider store={store}>
+        <BrowserRouter>
+          <div className="container">
+            <MainComponent />
+          </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
