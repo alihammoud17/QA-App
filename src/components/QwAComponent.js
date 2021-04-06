@@ -1,34 +1,34 @@
 
-
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Card, CardContent } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 
+const RenderQuestion = ({question}) => {
+    if (question == null) return ( <div></div> )
+    return (
+        <Card variant="outlined">
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {question.question}
+                    </Typography>
+                    <Typography variant="body1" color="textPrimary">
+                        {question.category}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                        asked by {question.author}, on {new Intl.DateTimeFormat('en-US',{
+                        year: 'numeric',
+                        month: 'long',
+                        day: '2-digit'
+                    }).format(new Date(question.date))}
+                    </Typography>
+                </CardContent>
 
-    const RenderQuestion = ({question}) => {
-        if (question == null) return ( <div></div> )
-        return (
-            <Card variant="outlined">
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {question.question}
-                        </Typography>
-                        <Typography variant="body1" color="textPrimary">
-                            {question.category}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                           asked by {question.author}, on {new Intl.DateTimeFormat('en-US',{
-                            year: 'numeric',
-                            month: 'long',
-                            day: '2-digit'
-                        }).format(new Date(question.date))}
-                        </Typography>
-                    </CardContent>
-
-            </Card>
-        );
-        
-    }
+        </Card>
+    );
+    
+}
 
 
 const RenderAnswers = ({answers}) => {
@@ -36,7 +36,7 @@ const RenderAnswers = ({answers}) => {
         return ( <div></div> );
     }
     const ans = answers.map(answer => { return(
-        <li>
+        <li key={answer.id}>
         <Card variant="outlined">
         <CardContent>
             <Typography variant="body1" color="textPrimary">
@@ -57,7 +57,7 @@ const RenderAnswers = ({answers}) => {
     
     });
     return (
-        <div >
+        <div style={{marginTop: "10px"}}>
             <h4>Answers</h4>
             <ul className="list-unstyled">
                 {ans}
@@ -72,7 +72,17 @@ const QwAComponent = ({question, answers}) => {
     if(question == null) return ( <div></div> );
 
     return (
-        <div >
+        <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to="/questions">Questions</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        {question.category}
+                    </BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <RenderQuestion question={question} />
             <RenderAnswers answers={answers} />
         </div>
