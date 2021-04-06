@@ -17,7 +17,7 @@ const RenderQuestion = ({question}) => {
                         <Typography variant="body1" color="textPrimary">
                             {question.category}
                         </Typography>
-                        <Typography variant="body2" color="text-secondary">
+                        <Typography variant="body2" color="textSecondary">
                         asked by {question.author}, on {new Intl.DateTimeFormat('en-US',{
                             year: 'numeric',
                             month: 'long',

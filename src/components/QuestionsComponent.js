@@ -36,7 +36,7 @@ const QuestionsComponent = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <React.Fragment>
+        <div className="container">
             <Row className="form-group">
                 <Col>
                     <Button onClick={toggleModal} fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
@@ -78,7 +78,7 @@ const QuestionsComponent = () => {
             <Pagination questionsPerPage={questionsPerPage} totalQuestions={questions.length} paginate={paginate}/>
             
             
-        </React.Fragment>
+        </div>
     )
 }
 

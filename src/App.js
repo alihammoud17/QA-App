@@ -11,7 +11,7 @@ function App() {
   return (
     <Provider store={store}>
         <BrowserRouter>
-          <div className="container">
+          <div>
             <MainComponent />
           </div>
       </BrowserRouter>
