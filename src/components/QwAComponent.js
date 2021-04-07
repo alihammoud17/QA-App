@@ -3,14 +3,16 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Card, CardContent } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-
+import { useState, useEffect } from 'react';
+import LoaderComponent from './LoaderComponent';
+import AnswerFormComponent from './AnswerFormComponent';
 
 const RenderQuestion = ({question}) => {
     if (question == null) return ( <div></div> )
     return (
         <Card variant="outlined">
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h3" component="h2">
                         {question.question}
                     </Typography>
                     <Typography variant="body1" color="textPrimary">
@@ -69,7 +71,19 @@ const RenderAnswers = ({answers}) => {
 
 const QwAComponent = ({question, answers}) => {
 
+    const [loading, setLoading] = useState(false)
+
+    
+
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+             setLoading(false);},3000);
+    }, [])
+
     if(question == null) return ( <div></div> );
+
+    if (loading) return ( <LoaderComponent /> )
 
     return (
         <div className="container">
@@ -85,6 +99,7 @@ const QwAComponent = ({question, answers}) => {
             </div>
             <RenderQuestion question={question} />
             <RenderAnswers answers={answers} />
+            <AnswerFormComponent />
         </div>
             
         
