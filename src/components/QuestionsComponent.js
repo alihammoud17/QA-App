@@ -36,8 +36,8 @@ const QuestionsComponent = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <div className="container">
-            <Row className="form-group">
+        <div>
+            <Row style={{marginLeft: "30px", marginRight: "30px"}} className="form-group">
                 <Col>
                     <Button onClick={toggleModal} fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
                 </Col>
@@ -50,7 +50,7 @@ const QuestionsComponent = () => {
                     <AskQsComponent />
                 </ModalBody>
             </Modal>
-            <LocalForm>
+            <LocalForm style={{marginLeft: "10px", marginRight: "10px"}}>
                 <h3>Questions</h3>
                 <Row className="form-group">
                     <Col xs={9}>

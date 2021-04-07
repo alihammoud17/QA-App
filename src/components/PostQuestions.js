@@ -1,5 +1,5 @@
 import React from 'react'
-import Loader from 'react-loader-spinner';
+import LoaderComponent from './LoaderComponent';
 import { Card, CardContent, CardActionArea } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { Row } from 'reactstrap';
@@ -42,7 +42,7 @@ const PostQuestions = ({questions, loading}) => {
         );
     });
 
-    if (loading) return <Loader type="Circles" color="#3f51b5" height={120} width={120}/>;
+    if (loading) return (  <LoaderComponent/> ) ;
 
     return (
         <Row className="form-group">
