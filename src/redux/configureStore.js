@@ -1,10 +1,14 @@
-import { createStore } from 'redux';
-import { Reducer, initialState } from './reducer';
+import { createStore, combineReducers } from 'redux';
+import { Questions } from './questions';
+import { Answers } from './answers';
 
-export const configureStore = () => {
+export const configureStore = (enhancer) => {
     const store = createStore(
-        Reducer,
-        initialState
+        combineReducers({
+            questions: Questions,
+            answers: Answers
+        }),
+        enhancer
     );
     return store;
 }
