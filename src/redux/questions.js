@@ -1,10 +1,9 @@
 import { QUESTIONS } from '../shared/questions';
-import * as ActionTypes from './ActionTypes';
 
 //reducer that manages questions
 export const Questions = (state = QUESTIONS, action) => {
     switch(action.type){
-        case ActionTypes.ADD_QUESTION:
+        case 'ADD_QUESTION_ASYNC':
             var question = action.payload;
             question.id = state.length;
             question.date = new Date().toISOString();
