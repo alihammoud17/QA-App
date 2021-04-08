@@ -69,7 +69,7 @@ const RenderAnswers = ({answers}) => {
     );
 }
 
-const QwAComponent = ({question, answers}) => {
+const QwAComponent = (props) => {
 
     const [loading, setLoading] = useState(false)
 
@@ -81,7 +81,7 @@ const QwAComponent = ({question, answers}) => {
              setLoading(false);},3000);
     }, [])
 
-    if(question == null) return ( <div></div> );
+    if(props.question == null) return ( <div></div> );
 
     if (loading) return ( <LoaderComponent /> )
 
@@ -93,13 +93,13 @@ const QwAComponent = ({question, answers}) => {
                         <Link to="/questions">Questions</Link>
                     </BreadcrumbItem>
                     <BreadcrumbItem active>
-                        {question.category}
+                        {props.question.category}/{props.question.id}
                     </BreadcrumbItem>
                 </Breadcrumb>
             </div>
-            <RenderQuestion question={question} />
-            <RenderAnswers answers={answers} />
-            <AnswerFormComponent />
+            <RenderQuestion question={props.question} />
+            <RenderAnswers answers={props.answers} />
+            <AnswerFormComponent qId={props.question.id} addAnswer={props.addAnswer} />
         </div>
             
         

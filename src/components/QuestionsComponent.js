@@ -1,55 +1,40 @@
-import { Row, Col, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
-import  Button  from '@material-ui/core/Button'
 import React from 'react';
-import { Add, Search } from '@material-ui/icons';
+import { Search } from '@material-ui/icons';
 import PostQuestions from './PostQuestions';
 import { useState, useEffect } from 'react';
-import { QUESTIONS } from '../shared/questions';
+// import { QUESTIONS } from '../shared/questions';
 import Pagination from './Pagination';
-import AskQsComponent from './AskQsComponent'
+import AskQsComponent from './AskQsComponent';
 
-const QuestionsComponent = () => {
+const QuestionsComponent = (props) => {
 
-    const [questions, setQuestions] = useState([]);
+    // const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [questionsPerPage] = useState(5);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [questionsPerPage] = useState(5);
+    
 
     useEffect(() => {
         setLoading(true);
-        setQuestions(QUESTIONS)
-        console.log(questions.length)
+        // setQuestions(QUESTIONS)
+        // console.log(props.questions.length)
         setTimeout(() => {
              setLoading(false);},3000);
     }, [])
 
-    const toggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-    }
+    
 
-    const indexOfLastQuestion = currentPage * questionsPerPage;
-    const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-    const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+    // const indexOfLastQuestion = currentPage * questionsPerPage;
+    // const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+    // const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
 
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+    // const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div>
-            <Row style={{marginLeft: "30px", marginRight: "30px"}} className="form-group">
-                <Col>
-                    <Button onClick={toggleModal} fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
-                </Col>
-            </Row>
-            <Modal isOpen={isModalOpen} toggle={toggleModal}>
-                <ModalHeader toggle={toggleModal}>
-                    Ask a Question
-                </ModalHeader>
-                <ModalBody>
-                    <AskQsComponent />
-                </ModalBody>
-            </Modal>
+            <AskQsComponent id={props.id} addQuestion={props.addQuestion}/>
             <LocalForm style={{marginLeft: "10px", marginRight: "10px"}}>
                 <h3>Questions</h3>
                 <Row className="form-group">
@@ -60,8 +45,8 @@ const QuestionsComponent = () => {
                 </Row>
                 <Row className="form-group">
                     <Col xs={3}>
-                        <Control.select model=".cat" id="cat" 
-                        name="cat" className="form-control">
+                        <Control.select model=".category" id="category" 
+                        name="category" className="form-control">
                             <option>All</option>
                             <option>Science</option>
                             <option>Nutrition</option>
@@ -72,10 +57,10 @@ const QuestionsComponent = () => {
                     </Col>
                 </Row>
                 <h4>Most frequent</h4>
-                <PostQuestions questions={currentQuestions} loading={loading} />
+                <PostQuestions questions={props.questions} loading={loading} />
             </LocalForm>
             
-            <Pagination questionsPerPage={questionsPerPage} totalQuestions={questions.length} paginate={paginate}/>
+            {/* <Pagination questionsPerPage={questionsPerPage} totalQuestions={questions.length} paginate={paginate}/> */}
             
             
         </div>
