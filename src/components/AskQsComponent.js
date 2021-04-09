@@ -25,7 +25,7 @@ const AskQsComponent = (props) => {
     }
 
     return (
-        <React.Fragment>
+        <div style={{marginBottom: "20px"}}>
             <Button onClick={toggleModal} fullWidth startIcon={<Add />} variant="contained" size="large" color="primary">Ask a Question</Button>
             <Modal isOpen={isModalOpen} toggle={toggleModal}>
                 <ModalHeader toggle={toggleModal}>
@@ -42,7 +42,7 @@ const AskQsComponent = (props) => {
                         </Row>
                         <Row className="form-group">
                             <Label htmlFor="category" md={5}>Question's Category</Label>
-                            <Col xs={3}>
+                            <Col xs={5}>
                                 <Control.select value={value} onChange={handleChange} model=".category" id="category"
                                 name="category" className="form-control">
                                     <option></option>
@@ -72,7 +72,7 @@ const AskQsComponent = (props) => {
                 </ModalBody>
             </Modal>
             
-        </React.Fragment>
+        </div>
         
     )
 }
