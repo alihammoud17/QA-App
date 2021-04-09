@@ -1,7 +1,7 @@
 import { ANSWERS } from '../shared/answers';
 import * as ActionTypes from './ActionTypes';
 
-//reducer that manages answers
+//reducer that manages questions
 export const Answers = (state = ANSWERS, action) => {
     switch(action.type){
         case ActionTypes.ADD_ANSWER:
